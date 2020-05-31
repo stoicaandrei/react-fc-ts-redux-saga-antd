@@ -52,15 +52,20 @@ export default class ApiConstructor<Entity> {
       })
     );
 
-    this.reducer.case(api.action.started, state =>
+    this.reducer.case(api.action.started, (state, payload) =>
       produce(state, (draft: any) => {
+        if (api.startReducer) return api.startReducer(draft, payload);
+
         draft.waiting = true;
         draft.error = undefined;
       })
     );
 
-    this.reducer.case(api.action.failed, (state, { error }) =>
+    this.reducer.case(api.action.failed, (state, { params, error }) =>
       produce(state, (draft: any) => {
+        if (api.failReducer)
+          return api.failReducer(draft, error, params as Payload);
+
         draft.waiting = false;
         draft.error = error;
       })
