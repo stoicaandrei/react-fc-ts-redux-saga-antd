@@ -21,7 +21,7 @@
     "baseUrl": ".",
     "paths": {
       "state": ["src/state"],
-      "state/utils": ["src/state/utils"],
+      "services": ["src/services"],
       "utils": ["src/utils"],
       "components": ["src/components"],
       "appConstants": ["src/appConstants"],
