@@ -1,9 +1,12 @@
+import { ApiConstructor } from 'services';
 
+import * as actions from './actions';
 
-export type API<Payload> = {
-  path: string;
-  method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
-  data?: Payload;
-  auth?: boolean;
+const apiConstructor = new ApiConstructor({ name: 'pet' });
 
-}
+apiConstructor.createApi<actions.FindPetsPayload, actions.FindPetsResult>({
+  path: '/findByStatus',
+  action: actions.findPets,
+});
+
+export default apiConstructor;

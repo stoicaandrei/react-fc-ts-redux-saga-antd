@@ -1,4 +1,4 @@
-import { StoreState } from '../root/reducers';
+import { StoreState } from '../root';
 
 export const available = (state: StoreState) =>
   state.pet.items.filter(pet => pet.status === 'available');

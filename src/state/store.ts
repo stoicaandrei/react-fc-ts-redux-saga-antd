@@ -2,9 +2,7 @@ import { createStore, compose, applyMiddleware, StoreEnhancer } from 'redux';
 import { devToolsEnhancer } from 'redux-devtools-extension/logOnlyInProduction';
 import createSagaMiddleware from 'redux-saga';
 
-import rootSaga from './modules/root/sagas';
-
-import rootReducer, { StoreState } from './modules/root/reducers';
+import { rootSaga, rootReducer, StoreState } from './modules/root/';
 
 /**
  * Create the redux-saga middleware.

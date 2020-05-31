@@ -9,7 +9,9 @@ type apiParams<Payload> = {
   auth?: boolean;
 };
 
-export default function (endpoint: string) {
+export type ApiCaller = <T>(params: apiParams<T>) => Promise<any>;
+
+export function apiCaller(endpoint: string): ApiCaller {
   const baseUrl = `${API_URL}/${endpoint}`;
 
   return async function <Payload>({

@@ -1,1 +1,1 @@
-export { default as createApiCaller } from './createApiCaller';
+export * from './Api';

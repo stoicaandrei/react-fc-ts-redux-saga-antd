@@ -7,7 +7,11 @@ const actionCreator = actionCreatorFactory('Pet');
 export type FindPetsPayload = {
   status: PetStatus;
 };
+export type FindPetsResult = Pet[];
 export type FindPetsAction = Action<FindPetsPayload>;
-export const findPets = actionCreator.async<FindPetsPayload, Pet[], Error>(
-  'FIND_PETS'
-);
+
+export const findPets = actionCreator.async<
+  FindPetsPayload,
+  FindPetsResult,
+  Error
+>('FIND_PETS');
