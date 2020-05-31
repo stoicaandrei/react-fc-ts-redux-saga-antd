@@ -1,12 +1,11 @@
 import React from 'react';
 
-import { View } from './views';
+import { PetStore } from './views';
 
 const App: React.FC = () => {
   return (
     <div>
-      App
-      <View />
+      <PetStore />
     </div>
   );
 };
