@@ -1,24 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {Provider} from 'react-redux';
-import {HelmetProvider} from 'react-helmet-async';
+import { Provider } from 'react-redux';
+import { HelmetProvider } from 'react-helmet-async';
 
 import 'antd/dist/antd.css';
 
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-// import {getStore} from './state/store';
-
+import { getStore } from './state/store';
 
 ReactDOM.render(
   <React.StrictMode>
-    {/*<Provider store={getStore()}>*/}
+    <Provider store={getStore()}>
       <HelmetProvider>
-        <App/>
+        <App />
       </HelmetProvider>
-    {/*</Provider>*/}
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
