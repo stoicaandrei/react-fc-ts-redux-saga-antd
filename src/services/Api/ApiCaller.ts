@@ -22,7 +22,13 @@ export function apiCaller(endpoint: string): ApiCaller {
   }: apiParams<Payload>): Promise<any> {
     const query = '?' + queryString.stringify((data as any) || {});
 
-    const url = `${baseUrl}${path}${method === 'GET' ? query : ''}`;
+    let url = `${baseUrl}${path}${method === 'GET' ? query : ''}`;
+
+    const urlParams = path.split('/').filter(s => s[0] === ':');
+
+    urlParams.forEach(
+      param => (url = url.replace(param, (data as any)[param.slice(1)]))
+    );
 
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');

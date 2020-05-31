@@ -6,4 +6,5 @@ export type API<Payload, Result, InS> = {
   data?: Payload;
   auth?: boolean;
   action: AsyncActionCreators<Payload, Result, Error>;
+  successReducer: (state: InS, result: Result, payload: Payload) => void;
 };

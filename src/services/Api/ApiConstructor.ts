@@ -66,10 +66,9 @@ export default class ApiConstructor<Entity> {
       })
     );
 
-    this.reducer.case(api.action.done, (state, { result }) =>
+    this.reducer.case(api.action.done, (state, { params, result }) =>
       produce(state, (draft: any) => {
-        draft.items = result;
-        draft.waiting = false;
+        api.successReducer(draft, result as Result, params as Payload);
       })
     );
   }
