@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { List, Skeleton, Avatar, Button } from 'antd';
 
-import { findPets, petSelectors } from 'state';
+import { findPets, deletePet, petSelectors } from 'state';
 
 const PetStore: React.FC = () => {
   const dispatch = useDispatch();
@@ -17,18 +17,22 @@ const PetStore: React.FC = () => {
   return (
     <div>
       <List
-        loading={waiting}
+        // loading={waiting}
         dataSource={pets}
         pagination={{ position: 'bottom' }}
         renderItem={item => (
           <List.Item
             actions={[
-              <Button type="primary" key="delete">
+              <Button
+                type="primary"
+                key="delete"
+                onClick={() => dispatch(deletePet.started({ id: item.id }))}
+              >
                 delete
               </Button>,
             ]}
           >
-            <Skeleton avatar title={false} loading={waiting} active>
+            <Skeleton avatar title={false} loading={false} active>
               <List.Item.Meta
                 avatar={
                   <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
